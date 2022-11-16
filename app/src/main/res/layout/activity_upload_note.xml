@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".uploadNote">
+
+    <RelativeLayout
+        android:id="@+id/todo_nav"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:background="@color/purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="131dp"
+            android:layout_marginBottom="19dp"
+            android:layout_toStartOf="@+id/imageView4"
+            android:text="Home"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        style="@style/heading"
+        android:layout_width="292dp"
+        android:layout_height="55dp"
+        android:text="Let's get productive"
+        app:layout_constraintBottom_toTopOf="@+id/openTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todo_nav" />
+
+    <Button
+        android:id="@+id/openTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create task"
+        app:layout_constraintBottom_toTopOf="@+id/openNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todo_nav"
+        app:layout_constraintVertical_bias="0.842" />
+
+    <Button
+        android:id="@+id/openNotes"
+        android:layout_width="110dp"
+        android:layout_height="54dp"
+        android:text="Add note"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todo_nav" />
+</androidx.constraintlayout.widget.ConstraintLayout>
