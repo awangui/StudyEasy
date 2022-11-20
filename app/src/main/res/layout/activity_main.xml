@@ -9,6 +9,7 @@
     <RelativeLayout
         android:id="@+id/todo_nav"
         android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_height="75dp"
         android:layout_alignParentStart="true"
         android:background="@color/purple">
@@ -16,16 +17,14 @@
         <EditText
             android:id="@+id/createTitle"
             android:layout_width="match_parent"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
             android:layout_height="45dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="17dp"
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Add Title"
             android:inputType="textMultiLine"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
             android:textColor="@color/gray"
             android:textColorHint="@color/gray"
             tools:layout_editor_absoluteX="-16dp"

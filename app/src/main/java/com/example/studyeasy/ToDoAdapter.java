@@ -12,7 +12,9 @@ import java.util.List;
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 private List<ToDoModel> todolist;
 private MainActivity2 activity;
+
 public  ToDoAdapter(MainActivity2 activity){
+
     this.activity = activity;
         }
 public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -23,7 +25,7 @@ public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 public void onBindViewHolder(ViewHolder holder, int position){
     ToDoModel item = todolist.get(position);
     holder.task.setText(item.getTask());
-    holder.task.setChecked(toBoolean(item.getStatus()));
+//    holder.task.setChecked(toBoolean(item.getStatus()));
 }
 
     @Override

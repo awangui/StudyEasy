@@ -40,9 +40,11 @@
         android:id="@+id/recycleview"
         android:clickable="true"
         android:layout_width="match_parent"
+        app:reverseLayout="true"
         android:layout_height="550dp"
         android:layout_above="@+id/floatingActionButton"
         android:layout_marginBottom="15dp"
+        android:nestedScrollingEnabled="true"
         app:layout_constraintTop_toBottomOf="@+id/todo_nav" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -70,20 +72,3 @@
        />
 
 </RelativeLayout>
-
-
-
-<!--    <ListView-->
-<!--        android:id="@+id/myListView"-->
-<!--        android:layout_width="409dp"-->
-<!--        android:layout_height="584dp"-->
-<!--        android:padding="5dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/todo_nav"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
-
-
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

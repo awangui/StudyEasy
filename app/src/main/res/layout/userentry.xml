@@ -4,51 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="12dp"
+    app:cardElevation="10dp"
     app:cardCornerRadius="12dp"
-    android:layout_margin="16dp">
+    android:layout_margin="14dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="left">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title:"
                 android:textSize="24dp"
-                android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/purple"/>
     </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="left">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Note:"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
                 android:id="@+id/note"
+                android:paddingStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>

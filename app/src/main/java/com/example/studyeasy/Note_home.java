@@ -11,21 +11,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Note_home extends AppCompatActivity implements  RecyclerViewInterface{
-    ListView myListView;
-    List<Notes> notesList;
+
     RecyclerView recyclerView;
-    ArrayList<Notes> list;
+    List<Notes> list;
     ListAdapter adapter;
     DatabaseReference notesDbRef;
 
@@ -36,11 +37,12 @@ public class Note_home extends AppCompatActivity implements  RecyclerViewInterfa
         setContentView(R.layout.activity_note_home);
 //        myListView = findViewById(R.id.myListView);
 //        notesList = new ArrayList<>();
+        getSupportActionBar().hide();
         notesDbRef = FirebaseDatabase.getInstance().getReference("Notes");
         recyclerView= findViewById(R.id.recycleview);
         list = new ArrayList<>();
 
-        adapter = new ListAdapter(this, list);
+        adapter = new ListAdapter(this, (ArrayList<Notes>) list, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -52,7 +54,7 @@ public class Note_home extends AppCompatActivity implements  RecyclerViewInterfa
                     Notes notes = dataSnapshot.getValue(Notes.class);
                     list.add(notes);
                 }
-                Object notifyDataSetChanged = adapter.notifyDataSetChanged;
+                 adapter.notifyDataSetChanged();
             }
 
 //
@@ -63,6 +65,7 @@ public class Note_home extends AppCompatActivity implements  RecyclerViewInterfa
             }
 
         });
+
     }
 
     public void openCreateNote(View view) {
@@ -71,15 +74,15 @@ public class Note_home extends AppCompatActivity implements  RecyclerViewInterfa
     }
 
 
-
     @Override
-    public void onItemLongClick(int position) {
-        list.remove(position);
-        adapter.notifyItemRemoved(position);
+    public void onItemClick(int position) {
+        Toast.makeText(this, "note clicked", Toast.LENGTH_SHORT).show();
     }
 
-//    public void openUploadNote(View view) {
-//        startActivity(new Intent(Note_home.this, uploadNote.class));
-//        finish();
-//
+    @Override
+    public void onItemLongClick(int pos) {
+        list.remove(pos);
+        Toast.makeText(this, "note deleted", Toast.LENGTH_SHORT).show();
+        adapter.notifyItemRemoved(pos);
+    }
 }
