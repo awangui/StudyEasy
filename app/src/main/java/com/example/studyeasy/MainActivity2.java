@@ -2,6 +2,7 @@ package com.example.studyeasy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -29,13 +31,15 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().hide();
+
         tasksDbRef= FirebaseDatabase.getInstance().getReference("Tasks");
         taskList=new ArrayList<>();
         tasksRecyclerView=findViewById(R.id.tasksRecyclerView);
-        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        tasksRecyclerView.setLayoutManager(layoutManager);
         tasksAdapter = new ToDoAdapter(this);
         tasksRecyclerView.setAdapter(tasksAdapter);
+        new  ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(tasksRecyclerView);
         tasksDbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -43,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
                     ToDoModel tasks = dataSnapshot.getValue(ToDoModel.class);
                     taskList.add(tasks);
                 }
+                Collections.reverse(taskList);
                 tasksAdapter.notifyDataSetChanged();
             }
 
@@ -61,4 +66,16 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(new Intent(MainActivity2.this, new_task.class));
         finish();
     }
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback= new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+        taskList.remove(viewHolder.getAdapterPosition());
+        tasksAdapter.notifyDataSetChanged();
+        }
+    };
 }
